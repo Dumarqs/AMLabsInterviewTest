@@ -1,0 +1,17 @@
+﻿<!-- table of contents -->
+<table>
+    <!-- table:header -->
+    <tr>
+        <th>Id </th>
+        <th>Task </th>
+        <th>Created Date </th>
+    </tr>
+    <tr ng-repeat="todo in todos track by $index">
+        <td>{{todo.id}}</td>
+        <td>{{todo.task}}</td>
+        <td>{{todo.createdDate | date:'MM/dd/yyyy' }}</td>
+    </tr>
+</table>
+
+<!-- pagination component -->
+<pagination></pagination>
