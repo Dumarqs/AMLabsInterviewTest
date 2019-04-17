@@ -19,40 +19,41 @@
             $scope.maxSize = 5;     // Limit number for pagination display number.  
             $scope.totalCount = 0;  // Total number of items in all pages. initialize as a zero  
             $scope.pageIndex = 1;   // Current page number. First page is 1.-->  
-            $scope.pageSizeSelected = 20; // Maximum number of items per page. 
-
             $scope.DropDownList = [
                 {
                     Value: 0,
-                    Name: 'All',
-                    Selected: false
+                    Name: 'All'
                 }, {
                     Value: 10,
-                    Name: '10',
-                    Selected: false
+                    Name: '10'
                 }, {
                     Value: 20,
-                    Name: '20',
-                    Selected: true
+                    Name: '20'
                 }, {
                     Value: 30,
-                    Name: '30',
-                    Selected: false
+                    Name: '30'
                 }]; // Set dropdownlist values
+            $scope.pageSizeSelected = $scope.DropDownList[2]; // Maximum number of items per page. 
 
             $scope.getAll = function() {
-                $http.get("api/Todo/All").then(response => $scope.todos = response.data);
+                $http.get("api/Todo/All").then(
+                    function(response) {
+                        $scope.todos = response.data
+                        $scope.numPages = 5;
+                    }
+                );
             }
 
             $scope.getByPage = function() {
-                $http.get("api/Todo/ByPage?page=" + $scope.pageIndex + "&pageSize=" + $scope.pageSizeSelected).then(
+                $http.get("api/Todo/ByPage?page=" + $scope.pageIndex + "&pageSize=" + $scope.pageSizeSelected.Value).then(
                     function(response) {
                         $scope.todos = response.data;
+                        $scope.numPages = 5;
                     });
             }
 
-            //Loading todo list
-            $scope.getAll();  
+            //Loading todo list by page
+            $scope.getByPage();  
 
             //This method is called when the page is changed
             $scope.pageChanged = function () {
@@ -62,12 +63,11 @@
             //This method is calling from dropDown  
             $scope.changePageSize = function () {
                 $scope.pageIndex = 1;
-                if ($scope.pageSizeSelected === "0") {
+                if ($scope.pageSizeSelected.Value === 0) {
                     $scope.getAll();
                 } else {
                     $scope.getByPage();
                 }
-                
             }; 
         }
 

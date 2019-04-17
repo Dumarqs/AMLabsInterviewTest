@@ -45,7 +45,7 @@ namespace InterviewTestPagination.Models.Todo {
         /// <returns></returns>
         public IEnumerable<Todo> ByPage(int page, int pageSize)
         {
-            return DataSource.Values.Page(page, pageSize);
+            return DataSource.Values.Page(page, pageSize).OrderByDescending(t => t.CreatedDate);
         }
 
     }
