@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using InterviewTestPagination.ViewModels;
 
 namespace InterviewTestPagination.Models.Todo
 {
@@ -8,12 +9,12 @@ namespace InterviewTestPagination.Models.Todo
         /// Get all result
         /// </summary>
         /// <returns></returns>
-        IEnumerable<Todo> All();
+        TodoViewModel All();
 
         /// <summary>
         /// Get result by page
         /// </summary>
         /// <returns></returns>
-        IEnumerable<Todo> ByPage(int page, int pageSize);
+        TodoViewModel ByPage(int page, int pageSize);
     }
 }

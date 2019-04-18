@@ -21,8 +21,8 @@
                 ng-options="d as d.Name for d in DropDownList">  
         </select>  
     </span>  
-    <div class="pull-right">  
-        <pagination total-items="totalCount" ng-change="pageChanged()" items-per-page="pageSizeSelected" direction-links="true" ng-model="pageIndex" max-size="maxSize" class="pagination" boundary-links="true" rotate="false" num-pages="numPages"></pagination>  
-        <a class="btn btn-primary">Page: {{pageIndex}} / {{numPages}}</a>  
+    <div class="pull-right">
+        <pagination total-items="totalCount" ng-change="pageChanged()" items-per-page="pageSizeSelected.Value" direction-links="true" ng-model="pageIndex" max-size="maxSize" class="pagination" boundary-links="true" rotate="false" num-pages="numPages"></pagination>
+        <a class="btn btn-primary">Page: {{pageIndex}} / {{numPages}}</a>
     </div>
 </div>

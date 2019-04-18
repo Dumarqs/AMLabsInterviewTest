@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using InterviewTestPagination.Models.Todo.Interfaces;
 using InterviewTestPagination.Utils;
+using InterviewTestPagination.ViewModels;
 
 namespace InterviewTestPagination.Models.Todo {
 
@@ -33,8 +34,12 @@ namespace InterviewTestPagination.Models.Todo {
         /// Get all elements from DataSource
         /// </summary>
         /// <returns>Return an IENumerable containg all results</returns>
-        public IEnumerable<Todo> All() {
-            return DataSource.Values.OrderByDescending(t => t.CreatedDate);
+        public TodoViewModel All() {
+            var todoVM = new TodoViewModel();
+            todoVM.Todos = DataSource.Values.OrderByDescending(t => t.CreatedDate);
+            todoVM.Count = DataSource.Values.Count();
+
+            return todoVM;
         }
 
         /// <summary>
@@ -43,9 +48,13 @@ namespace InterviewTestPagination.Models.Todo {
         /// <param name="page"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        public IEnumerable<Todo> ByPage(int page, int pageSize)
+        public TodoViewModel ByPage(int page, int pageSize)
         {
-            return DataSource.Values.Page(page, pageSize).OrderByDescending(t => t.CreatedDate);
+            var todoVM = new TodoViewModel();
+            todoVM.Todos = DataSource.Values.Page(page, pageSize).OrderByDescending(t => t.CreatedDate);
+            todoVM.Count = DataSource.Values.Count();
+
+            return todoVM;
         }
 
     }

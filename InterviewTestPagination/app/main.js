@@ -2,7 +2,7 @@
     "use strict";
 
     angular
-        .module("todoApp")
+        .module("todoApp", ['ui.bootstrap'])
         .directive("todoPaginatedList", [todoPaginatedList])
 
     function todoPaginatedList() {
@@ -38,8 +38,8 @@
             $scope.getAll = function() {
                 $http.get("api/Todo/All").then(
                     function(response) {
-                        $scope.todos = response.data
-                        $scope.numPages = 5;
+                        $scope.todos = response.data.todos;
+                        $scope.totalCount = response.data.count;
                     }
                 );
             }
@@ -47,8 +47,8 @@
             $scope.getByPage = function() {
                 $http.get("api/Todo/ByPage?page=" + $scope.pageIndex + "&pageSize=" + $scope.pageSizeSelected.Value).then(
                     function(response) {
-                        $scope.todos = response.data;
-                        $scope.numPages = 5;
+                        $scope.todos = response.data.todos;
+                        $scope.totalCount = response.data.count;
                     });
             }
 

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using InterviewTestPagination.ViewModels;
 
 namespace InterviewTestPagination.Models.Todo.Interfaces
 {
@@ -8,7 +9,7 @@ namespace InterviewTestPagination.Models.Todo.Interfaces
         /// lists all entries of type T
         /// </summary>
         /// <returns></returns>
-        IEnumerable<Todo> All();
+        TodoViewModel All();
 
         /// <summary>
         /// Method that get a list by page of type T
@@ -16,6 +17,6 @@ namespace InterviewTestPagination.Models.Todo.Interfaces
         /// <param name="page"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        IEnumerable<Todo> ByPage(int page, int pageSize);
+        TodoViewModel ByPage(int page, int pageSize);
     }
 }

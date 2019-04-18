@@ -1,6 +1,7 @@
 ﻿using InterviewTestPagination.Models.Todo;
 using System.Collections.Generic;
 using System.Web.Http;
+using InterviewTestPagination.ViewModels;
 
 namespace InterviewTestPagination.Controllers
 {
@@ -24,12 +25,12 @@ namespace InterviewTestPagination.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Todo> All() {
+        public TodoViewModel All() {
             return _todoService.All();
         }
 
         [HttpGet]
-        public IEnumerable<Todo> ByPage(int page, int pageSize)
+        public TodoViewModel ByPage(int page, int pageSize)
         {
             return _todoService.ByPage(page, pageSize);
         }

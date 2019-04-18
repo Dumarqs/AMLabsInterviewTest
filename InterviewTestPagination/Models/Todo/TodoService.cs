@@ -1,7 +1,9 @@
-﻿using InterviewTestPagination.Models.Todo.Interfaces;
-using System.Collections.Generic;
+﻿using System.Linq;
+using InterviewTestPagination.Models.Todo.Interfaces;
+using InterviewTestPagination.ViewModels;
 
-namespace InterviewTestPagination.Models.Todo {
+namespace InterviewTestPagination.Models.Todo
+{
     /// <summary>
     /// TODO: Implement methods that enable pagination
     /// </summary>
@@ -19,7 +21,7 @@ namespace InterviewTestPagination.Models.Todo {
         /// Get all 
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<Todo> All() {
+        public TodoViewModel All() {
             return _repository.All();
         }
 
@@ -29,9 +31,9 @@ namespace InterviewTestPagination.Models.Todo {
         /// <param name="page"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        public IEnumerable<Todo> ByPage(int page, int pageSize)
+        public TodoViewModel ByPage(int page, int pageSize)
         {
-            return _repository.ByPage(page, pageSize);
+            return _repository.ByPage(page, pageSize); 
         }
     }
 }
